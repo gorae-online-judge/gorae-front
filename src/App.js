@@ -27,6 +27,11 @@ const GlobalStyle = createGlobalStyle`
     margin: 0 auto;
     padding: 20px 20px;
   }
+
+  article {
+    width: 75%;
+    margin: 0 auto;
+  }
 `;
 
 function App() {
