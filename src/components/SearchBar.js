@@ -37,12 +37,14 @@ button {
 `;
 
 function SearchBar() {
-    const submitHandler = (e) => { console.log('submit!')};
+    const submitHandler = (e) => {
+        console.log('submit')
+    };
 
     return (
         <form onSubmit={submitHandler}>
             <SearchBarBlock>
-                <textarea name="task" rows="1" placeholder="백준 문제 번호를 입력해주세요" required></textarea>
+                <textarea name="number" rows="1" placeholder="백준 문제 번호를 입력해주세요" required></textarea>
                 <button type="submit" class="search">검색</button>
             </SearchBarBlock>
         </form>

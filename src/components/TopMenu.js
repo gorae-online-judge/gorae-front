@@ -5,6 +5,10 @@ const TopMenuBlock = styled.ul`
 display: flex;
 align-items: center;
 list-style: none;
+li {
+    min-width: 5em;
+    text-align: center;
+}
 a {
     padding: 4px 8px;
     text-decoration: none;
