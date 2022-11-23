@@ -21,16 +21,11 @@ const GlobalStyle = createGlobalStyle`
   }
 
   main {
-    width: 75%;
-    // max-width: 800px;
+    width: 60%;
+    max-width: 1100px;
     min-width: 480px;
     margin: 0 auto;
     padding: 20px 20px;
-  }
-
-  article {
-    width: 75%;
-    margin: 0 auto;
   }
 `;
 

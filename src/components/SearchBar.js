@@ -4,18 +4,21 @@ const SearchBarBlock = styled.div`
 display: flex;
 align-items: center;
 justify-content: space-between;
-margin-bottom: 0.5em;
+max-width:30rem;
+margin: 0 auto;
 
 textarea{
     width: 79%;
     border: 1px solid #ccc;
     border-radius: 5px;
-    padding: 10px;
+    padding-left: 0.8rem;
     resize: none;
+    height: 2.5rem;
+    line-height: 2.5rem;
 }
 
 button {
-    height: 40px;
+    height: 2.5rem;
     border: 1px solid #ccc;
     border-radius: 5px;
     color: #ffffff;

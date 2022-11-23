@@ -9,10 +9,10 @@ a {
     padding: 4px 8px;
     text-decoration: none;
     font-family: 'GmarketSans';
-    color: #6e6d7a;
+    color: #3d577c;
     :hover{
         text-decoration: underline;
-        color: #0d0c22;
+        color: #30415a;
     }
 }
 `;

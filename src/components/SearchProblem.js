@@ -7,13 +7,14 @@ import TopNavigationBar from './TopNavigationBar';
 function SearchProblem() {
     useEffect(() => { console.log('Search Problem...')}, []);
     return (
-        <main>
+        <>
             <TopNavigationBar />
-            <br />
-            <article>
-                <SearchBar />
-            </article>
-        </main>
+            <div>
+                <main>
+                    <SearchBar />
+                </main>
+            </div>
+        </>
     );
 }
 

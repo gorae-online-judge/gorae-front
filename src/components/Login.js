@@ -6,9 +6,13 @@ import { useEffect } from "react";
 
 function Login() {
     return (
-        <main>
+        <>
             <TopNavigationBar />
-        </main>
+            <div>
+                <main>
+                </main>
+            </div>
+        </>
     );
 }
 

@@ -3,9 +3,13 @@ import TopNavigationBar from './TopNavigationBar';
 
 function SolveProblem() {
     return (
-        <main>
+        <>
             <TopNavigationBar />
-        </main>
+            <div>
+                <main>
+                </main>
+            </div>
+        </>
     );
 }
 

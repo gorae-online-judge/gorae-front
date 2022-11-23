@@ -4,9 +4,13 @@ import TopNavigationBar from './TopNavigationBar';
 
 function RegisterProblem() {
     return (
-        <main>
+        <>
             <TopNavigationBar />
-        </main>
+            <div>
+                <main>
+                </main>
+            </div>
+        </>
     );
 }
 
