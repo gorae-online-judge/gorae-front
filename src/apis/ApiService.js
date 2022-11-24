@@ -6,7 +6,7 @@ function ApiService() {
             return await Api.get("/search/" + problemNumber)
                 .then((res) => {
                     let mergedSamples = ''
-                    for (let i = 0; i < res.data.samples.length; i++){
+                    for (let i = 0; i < res.data.samples.length; i++) {
                         mergedSamples += '<p>예제 입력 ' + (i + 1) + '</p>';
                         mergedSamples += res.data.samples[i].input;
                         mergedSamples += '<p>예제 출력 ' + (i + 1) + '</p>';
@@ -16,6 +16,12 @@ function ApiService() {
                         }
                     }
                     res.data.samples = mergedSamples;
+                    return res.data;
+                });
+        },
+        getSampleJudgeResult: async (req) => {
+            return await Api.post("/judge", req)
+                .then((res) => {
                     return res.data;
                 })
                 .catch((e) => { console.log(e); return e; });

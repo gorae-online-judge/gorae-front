@@ -7,13 +7,20 @@ import { java } from "@codemirror/lang-java"
 import CodeMirror, { useCodeMirror } from '@uiw/react-codemirror';
 import { createTheme } from '@uiw/codemirror-themes';
 import { tags as t } from '@lezer/highlight';
+import ApiService from "../apis/ApiService";
+import CodeResult from "./CodeResult";
 
-function CodeEditor({ samplesText }) {
+function CodeEditor({ samplesText, problemNumber }) {
     const [selectedLanguage, setSelectedLanguage] = useState(0);
     const languageNames = ['Python', 'Java'];
     const editorLanguages = [python(), java()];
     const [editorLanguage, setEditorLanguage] = useState([editorLanguages[0]]);
     const [editorCode, setEditorCode] = useState('');
+
+    const [samplePassed, setSamplePassed] = useState();
+    const [submitPassed, setSubmitPassed] = useState();
+    const [sampleLoading, setSampleLoading] = useState(false);
+    const [submitLoading, setSubmitLoading] = useState(false);
 
     const materialPalenight = createTheme({
         theme: 'light',
@@ -53,9 +60,33 @@ function CodeEditor({ samplesText }) {
         ],
     });
 
+    const apiService = ApiService();
+
     useEffect(() => {
         setEditorLanguage([editorLanguages[selectedLanguage]]);
     }, [selectedLanguage]);
+
+    const SampleJudgeHandle = () => {
+        if (!editorCode) {
+            alert("코드를 입력해주세요.");
+            return;
+        }
+        if (samplesText.length === 0) {
+            alert("문제를 입력해주세요.");
+            return;
+        }
+
+        setSampleLoading(true);
+        const req = {
+            "language": languageNames[selectedLanguage], "code": editorCode,
+            "samples_text": samplesText
+        };
+        apiService.getSampleJudgeResult(req)
+            .then((data) => {
+                setSamplePassed(data);
+                setSampleLoading(false);
+            })
+    };
 
     return (
         <CodeBlock>
@@ -71,16 +102,24 @@ function CodeEditor({ samplesText }) {
                 }
             </LanguageBlocks>
             <CodeMirror
-                value="print('Hello, world!')"
+                value=""
                 // height="500px"
                 theme={materialPalenight}
                 extensions={editorLanguage}
                 onChange={(value) => setEditorCode(value)}
             />
+
             <SubmitButtonBlock>
-                <button type="button" onClick={() => { console.log('채점', editorCode) } }>채점</button>
-                <button type="button" onClick={() => { console.log('제출', editorCode) } }>제출</button>
+                <button type="button" onClick={SampleJudgeHandle}>채점</button>
+                <button type="button" onClick={() => { console.log('제출', editorCode) }}>제출</button>
             </SubmitButtonBlock>
+
+            {samplesText.length > 0 && 
+                <div style={{ padding: '0.2rem 0 0.8rem 0' }}>
+                    <CodeResult name="TESTS" isPassed={samplePassed} loading={sampleLoading } />
+                    <CodeResult name="FINAL TESTS" isPassed={submitPassed} loading={ submitLoading } />
+                </div>
+            }
         </CodeBlock>
     );
 }
@@ -102,7 +141,7 @@ flex: 1 1 50%;
     padding-left: 0.4rem;
     min-height: 20rem;
     max-height: 100%;
-    max-height: 65vh;
+    max-height: 57vh;
 }
 `;
 
@@ -169,5 +208,7 @@ button{
     }
 }
 `;
+
+
 
 export default CodeEditor;

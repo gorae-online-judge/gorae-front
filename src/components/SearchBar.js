@@ -1,10 +1,14 @@
+import { useEffect, useState } from 'react';
 import styled from 'styled-components';
 import ApiService from '../apis/ApiService';
+import BeatLoader from "react-spinners/BeatLoader";
 
 function SearchBar(props) {
     const apiService = ApiService();
+    const [loading, setLoading] = useState(false);
 
-    const getProblemInfos = (problemNumber) => { 
+    const getProblemInfos =  (problemNumber) => { 
+        props.setProblemNumber(problemNumber);
         apiService.getProblemInfos(problemNumber)
             .then((data) => {
                 // console.log(data.problem_description);
@@ -17,26 +21,41 @@ function SearchBar(props) {
                 props.setSamples(data.samples)
                 // console.log(data.samples_text);
                 props.setSamplesText(data.samples_text)
-            })
+
+                setLoading(false);
+            }).catch((error) => {
+                setLoading(false);
+                if (error.code === 'ERR_BAD_RESPONSE') {
+                    alert('문제 번호를 확인해주세요.');
+                }
+            });
+        
     }
 
     const submitHandler = (e) => {
+        setLoading(true);
         e.preventDefault();
-        getProblemInfos(e.target[0].value)
+        getProblemInfos(e.target[0].value);
     };
 
     const onCheckEnter = (e) => { 
         if (e.key === 'Enter') {
+            setLoading(true);
             e.preventDefault();
             getProblemInfos(e.target.value);
         }
     };
 
+    useEffect(() => { console.log(loading) }, [loading]);
+
     return (
         <form onSubmit={submitHandler} onKeyDown={onCheckEnter}>
             <SearchBarBlock>
                 <textarea name="number" rows="1" placeholder="백준 문제 번호를 입력해주세요" required></textarea>
-                <button type="submit" className="search">검색</button>
+                
+                <button type="submit" className="search">{loading ? <BeatLoader color="#fff"
+                    size="10px"
+                /> :"검색"}</button>
             </SearchBarBlock>
         </form>
     );
@@ -48,7 +67,7 @@ align-items: center;
 justify-content: space-between;
 max-width:30rem;
 margin: 1rem auto 1rem auto;
-padding: 0 3rem;
+padding: 1rem 3rem;
 
 textarea{
     width: 79%;

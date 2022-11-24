@@ -22,7 +22,7 @@ const GlobalStyle = createGlobalStyle`
 
   main {
     width: 95%;
-    max-width: 90rem;
+    max-width: 85rem;
     /* min-width: 45rem; */
     margin: 0 auto;
     /* padding-top: 1rem; */

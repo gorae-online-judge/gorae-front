@@ -5,8 +5,13 @@ import TopNavigationBar from '../components/TopNavigationBar';
 import CodeEditor from '../components/CodeEditor';
 import ProblemInfo from '../components/ProblemInfo';
 
-
 function SearchProblem() {
+    // 코드
+    const [language, setLanguage] = useState("");
+    const [code, setCode] = useState("")
+
+    // 문제 정보
+    const [problemNumber, setProblemNumber] = useState("");
     const [description, setDescription] = useState("");
     const [input, setInput] = useState("");
     const [output, setOutput] = useState("");
@@ -18,11 +23,11 @@ function SearchProblem() {
             <TopNavigationBar />
             <div>
                 <main>
-                    <SearchBar setDescription={setDescription} setInput={setInput}
+                    <SearchBar setProblemNumber={setProblemNumber} setDescription={setDescription} setInput={setInput}
                         setOutput={setOutput} setSamples={setSamples} setSamplesText={setSamplesText} />
                     <ProblemBlock>
-                        <CodeEditor samplesText={samplesText} />
                         <ProblemInfo description={description} input={input} output={output} samples={samples} />
+                        <CodeEditor samplesText={samplesText} problemNumber={problemNumber} />
                     </ProblemBlock>
                 </main>
             </div>
