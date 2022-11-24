@@ -4,10 +4,8 @@ import ApiService from '../apis/ApiService';
 function SearchBar(props) {
     const apiService = ApiService();
 
-    const submitHandler = (e) => {
-        e.preventDefault();
-        // console.log('submit', e.target[0].value)
-        apiService.getProblemInfos(e.target[0].value)
+    const getProblemInfos = (problemNumber) => { 
+        apiService.getProblemInfos(problemNumber)
             .then((data) => {
                 // console.log(data.problem_description);
                 props.setDescription(data.problem_description)
@@ -20,10 +18,22 @@ function SearchBar(props) {
                 // console.log(data.samples_text);
                 props.setSamplesText(data.samples_text)
             })
+    }
+
+    const submitHandler = (e) => {
+        e.preventDefault();
+        getProblemInfos(e.target[0].value)
+    };
+
+    const onCheckEnter = (e) => { 
+        if (e.key === 'Enter') {
+            e.preventDefault();
+            getProblemInfos(e.target.value);
+        }
     };
 
     return (
-        <form onSubmit={submitHandler}>
+        <form onSubmit={submitHandler} onKeyDown={onCheckEnter}>
             <SearchBarBlock>
                 <textarea name="number" rows="1" placeholder="백준 문제 번호를 입력해주세요" required></textarea>
                 <button type="submit" className="search">검색</button>

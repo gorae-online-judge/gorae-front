@@ -39,6 +39,7 @@ button + div{
     overflow: hidden;
     background-color: #fdfdfd;
     box-shadow: 0px 2px 6px rgb(0 0 0 / 20%);
+    display: none;
     &.active {
         display: block;
     }
