@@ -47,7 +47,7 @@ display: flex;
 align-items: center;
 justify-content: space-between;
 max-width:30rem;
-margin: 1rem auto 2rem auto;
+margin: 1rem auto 1rem auto;
 padding: 0 3rem;
 
 textarea{

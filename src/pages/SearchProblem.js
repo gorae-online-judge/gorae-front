@@ -20,12 +20,21 @@ function SearchProblem() {
                 <main>
                     <SearchBar setDescription={setDescription} setInput={setInput}
                         setOutput={setOutput} setSamples={setSamples} setSamplesText={setSamplesText} />
-                    <CodeEditor samplesText={samplesText} />
-                    <ProblemInfo description={description} input={input} output={output} samples={samples} />
+                    <ProblemBlock>
+                        <CodeEditor samplesText={samplesText} />
+                        <ProblemInfo description={description} input={input} output={output} samples={samples} />
+                    </ProblemBlock>
                 </main>
             </div>
         </>
     );
 }
+
+const ProblemBlock = styled.div`
+  display: flex;
+  justify-content: space-around;
+  flex-wrap: wrap;
+  max-height: 70vh;
+`;
 
 export default SearchProblem;

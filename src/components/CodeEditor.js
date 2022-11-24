@@ -90,6 +90,8 @@ const CodeBlock = styled.div`
 min-width: 25rem;
 max-width: 50rem;
 margin: 0 auto;
+padding: 0 1rem;
+flex: 1 1 50%;
 
 * {
     font-family: 'Hack';
@@ -98,8 +100,9 @@ margin: 0 auto;
 .cm-scroller {
     padding-top: 0.4rem;
     padding-left: 0.4rem;
-    min-height: 17rem;
-    max-height: 30rem;
+    min-height: 20rem;
+    max-height: 100%;
+    max-height: 65vh;
 }
 `;
 
@@ -108,8 +111,6 @@ const LanguageBlocks = styled.ul`
 color: #292d3e;
 overflow: hidden;
 border-radius: 5px 5px 0 0;
-margin-top: 0.8em;
-
 
 button {
     float: left;
@@ -147,6 +148,7 @@ button{
     cursor: pointer;
     font-family: 'Noto Sans KR';
     font-weight: 600;
+    margin-bottom: 0.8rem;
     :first-of-type {
         border-right-width: 0;
         border-radius: 0 0 0 5px;

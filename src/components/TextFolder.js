@@ -61,6 +61,10 @@ hr.dashed {
     margin: 0.8em 0 0.6em 0;
 }
 
+ol, ul {
+    padding: 0 1.5rem;
+}
+
 `;
 
 export default TextFolder;

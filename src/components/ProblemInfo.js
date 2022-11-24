@@ -15,9 +15,12 @@ function ProblemInfo({ description = "", input = "", output = "", samples = [] }
 
 const ProblmenInfoBlock = styled.div`
 min-width: 25rem;
-max-width: 50rem;
-margin: 0 auto;
-padding: 1rem 0;
+/* max-width: 45rem; */
+margin: auto auto;
+padding: 0 1rem;
+flex: 1 1 40%;
+max-height: 70vh;
+overflow: scroll;
 
 * {
     font-family: 'Noto Sans KR';
