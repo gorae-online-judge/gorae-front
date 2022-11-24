@@ -1,5 +1,5 @@
 import styled from 'styled-components';
-import TopNavigationBar from './TopNavigationBar';
+import TopNavigationBar from '../components/TopNavigationBar';
 
 function SolveProblem() {
     return (

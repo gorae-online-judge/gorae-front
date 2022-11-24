@@ -2,10 +2,10 @@
 import React from 'react';
 import './App.css';
 import { Route, Routes } from "react-router-dom";
-import Login from './components/Login'
+import Login from './pages/Login'
 import SearchProblem from './pages/SearchProblem';
-import SolveProblem from './components/SolveProblem';
-import RegisterProblem from './components/RegisterProblem';
+import SolveProblem from './pages/SolveProblem';
+import RegisterProblem from './pages/RegisterProblem';
 import { createGlobalStyle } from 'styled-components';
 
 const GlobalStyle = createGlobalStyle`

@@ -1,5 +1,5 @@
 import React from 'react';
-import TopNavigationBar from "./TopNavigationBar";
+import TopNavigationBar from "../components/TopNavigationBar";
 import styled from 'styled-components';
 import { useEffect } from "react";
 
