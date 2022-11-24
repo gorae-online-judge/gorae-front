@@ -8,7 +8,7 @@ import CodeMirror, { useCodeMirror } from '@uiw/react-codemirror';
 import { createTheme } from '@uiw/codemirror-themes';
 import { tags as t } from '@lezer/highlight';
 
-function CodeEditor() {
+function CodeEditor({ samplesText }) {
     const [selectedLanguage, setSelectedLanguage] = useState(0);
     const languageNames = ['Python', 'Java'];
     const editorLanguages = [python(), java()];
@@ -98,7 +98,7 @@ margin: 0 auto;
 .cm-scroller {
     padding-top: 0.4rem;
     padding-left: 0.4rem;
-    min-height: 20rem;
+    min-height: 17rem;
     max-height: 30rem;
 }
 `;
