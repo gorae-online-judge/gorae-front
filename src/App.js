@@ -3,7 +3,7 @@ import React from 'react';
 import './App.css';
 import { Route, Routes } from "react-router-dom";
 import Login from './components/Login'
-import SearchProblem from './components/SearchProblem';
+import SearchProblem from './pages/SearchProblem';
 import SolveProblem from './components/SolveProblem';
 import RegisterProblem from './components/RegisterProblem';
 import { createGlobalStyle } from 'styled-components';
@@ -21,11 +21,11 @@ const GlobalStyle = createGlobalStyle`
   }
 
   main {
-    width: 60%;
-    max-width: 1100px;
-    min-width: 480px;
+    width: 95%;
+    max-width: 60rem;
+    /* min-width: 45rem; */
     margin: 0 auto;
-    padding: 20px 20px;
+    padding-top: 1rem;
   }
 `;
 

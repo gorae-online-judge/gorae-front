@@ -7,8 +7,8 @@ const TopNavigationBarBlock = styled.div`
 display: flex;
 align-items: center;
 
-width: 75%;
-// max-width: 800px;
+width: 70%;
+max-width: 75rem;
 min-width: 850px;
 margin: 0 auto;
 padding: 1rem 1rem 0.8rem 1rem;
@@ -24,10 +24,6 @@ h1 {
     margin-right: auto;
     color: #3e4d66;
 }
-.menu {
-    disploay: flex;
-    align-items: center;
-}
 `;
 
 function TopNavigationBar() {
@@ -36,7 +32,7 @@ function TopNavigationBar() {
             <TopNavigationBarBlock>
                 <Link to="/"><img width="85em" src={logoImage} alt='' /></Link>
                 <h1>&lt; Gorae Online Judge /&gt;</h1>
-                <TopMenu></TopMenu>
+                <TopMenu/>
             </TopNavigationBarBlock>
         </div>
     );

@@ -1,7 +1,8 @@
 import { useEffect } from 'react';
 import styled from 'styled-components';
-import SearchBar from './SearchBar';
-import TopNavigationBar from './TopNavigationBar';
+import SearchBar from '../components/SearchBar';
+import TopNavigationBar from '../components/TopNavigationBar';
+import CodeEditor from '../components/CodeEditor';
 
 
 function SearchProblem() {
@@ -12,6 +13,7 @@ function SearchProblem() {
             <div>
                 <main>
                     <SearchBar />
+                    <CodeEditor />
                 </main>
             </div>
         </>

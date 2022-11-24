@@ -5,7 +5,8 @@ display: flex;
 align-items: center;
 justify-content: space-between;
 max-width:30rem;
-margin: 0 auto;
+margin: 1rem auto 2rem auto;
+padding: 0 3rem;
 
 textarea{
     width: 79%;
@@ -13,7 +14,7 @@ textarea{
     border-radius: 5px;
     padding-left: 0.8rem;
     resize: none;
-    height: 2.5rem;
+    // height: 2.5rem;
     line-height: 2.5rem;
 }
 
@@ -45,7 +46,7 @@ function SearchBar() {
         <form onSubmit={submitHandler}>
             <SearchBarBlock>
                 <textarea name="number" rows="1" placeholder="백준 문제 번호를 입력해주세요" required></textarea>
-                <button type="submit" class="search">검색</button>
+                <button type="submit" className="search">검색</button>
             </SearchBarBlock>
         </form>
     );
