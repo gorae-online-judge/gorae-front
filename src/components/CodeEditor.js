@@ -127,7 +127,7 @@ function CodeEditor({ samplesText, problemNumber }) {
 
 const CodeBlock = styled.div`
 min-width: 25rem;
-max-width: 50rem;
+max-width: 60rem;
 margin: 0 auto;
 padding: 0 1rem;
 flex: 1 1 50%;
