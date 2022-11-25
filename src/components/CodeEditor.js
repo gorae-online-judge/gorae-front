@@ -112,6 +112,7 @@ function CodeEditor({ samplesText, problemNumber }) {
             <SubmitButtonBlock>
                 <button type="button" onClick={SampleJudgeHandle}>채점</button>
                 <button type="button" onClick={() => { console.log('제출', editorCode) }}>제출</button>
+                <button type="button" onClick={() => { console.log('저장', editorCode) }}>저장</button>
             </SubmitButtonBlock>
 
             {samplesText.length > 0 && 
@@ -140,8 +141,7 @@ flex: 1 1 50%;
     padding-top: 0.4rem;
     padding-left: 0.4rem;
     min-height: 20rem;
-    max-height: 100%;
-    max-height: 57vh;
+    max-height: 55vh;
 }
 `;
 
@@ -191,19 +191,28 @@ button{
     :first-of-type {
         border-right-width: 0;
         border-radius: 0 0 0 5px;
-        background: linear-gradient(96.07deg, #84E9FF 0%, #a0bdfe 100%);
+        background: linear-gradient(96.07deg, #84E9FF 0%, #96cbfe 100%);
         :hover {
             color: #2a2d3e;
-            background: linear-gradient(96.07deg, rgba(132, 233, 255, 0.5) 0%, rgba(160, 189, 254, 0.5) 100%);
+            background: linear-gradient(96.07deg, #84E9FF8c 0%, #96cbfe8c 100%);
+        }
+    }
+    :nth-of-type(2){
+        border-left-width: 0;
+        border-right-width: 0;
+        background: linear-gradient(96.07deg, #96cbfe 0%, #a4b6ff 100%);
+        :hover {
+            color: #2a2d3e;
+            background: linear-gradient(96.07deg, #96cbfe8c 0%, #a4b6ff8c 100%);
         }
     }
     :last-of-type {
         border-left-width: 0;
         border-radius: 0 0 5px 0;
-        background: linear-gradient(96.07deg, #a0bdfe 0%, #C284FF 100%);
+        background: linear-gradient(96.07deg, #a4b6ff 0%, #C284FF 100%);
         :hover {
             color: #2a2d3e;
-            background: linear-gradient(96.07deg, rgba(160, 189, 254, 0.5) 0%, rgba(194, 132, 255, 0.5) 100%);
+            background: linear-gradient(96.07deg, #a4b6ff8c 0%, #C284FF8c 100%);
         }
     }
 }
