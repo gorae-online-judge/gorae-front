@@ -3,12 +3,11 @@ import logoImage from '../assets/image/whale.gif'
 import TopMenu from './TopMenu';
 import { Link } from 'react-router-dom';
 
-const TopNavigationBarBlock = styled.div`
+const TopNavigationBarBlock = styled.header`
 display: flex;
 align-items: center;
-
-width: 70%;
-max-width: 75rem;
+width: 95%;
+max-width: 110rem;
 min-width: 850px;
 margin: 0 auto;
 padding: 1rem 1rem 0.8rem 1rem;
