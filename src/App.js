@@ -7,6 +7,7 @@ import SearchProblem from './pages/SearchProblem';
 import SolveProblem from './pages/SolveProblem';
 import RegisterProblem from './pages/RegisterProblem';
 import { createGlobalStyle } from 'styled-components';
+import SignUp from './pages/SignUp';
 
 const GlobalStyle = createGlobalStyle`
   * {
@@ -35,6 +36,7 @@ function App() {
       <GlobalStyle/>
         <Routes>
         <Route path="/" element={<Login />} />
+        <Route path="/signup" element={<SignUp />} />
         <Route path="/problem/search" element={<SearchProblem />} />
         <Route path="/problem/solve" element={<SolveProblem />} />
         <Route path="/problem/register" element={<RegisterProblem />} />

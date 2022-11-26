@@ -2,6 +2,17 @@
 @import url(//webfontworld.github.io/gmarket/GmarketSans.css);
 @import url(//cdn.jsdelivr.net/npm/hack-font@3.3.0/build/web/hack-subset.css);
 @import url(//use.typekit.net/amx3rnv.css);
+@import url('https://use.typekit.net/amx3rnv.css');
+
+@font-face {
+  font-family: 'D2Coding';
+  src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_three@1.0/D2Coding.woff') format('woff');
+  font-weight: normal;
+  font-style: normal;
+}
+
+/* 'Nanum Gothic Coding',monospace; */
+@import url(//fonts.googleapis.com/earlyaccess/nanumgothiccoding.css);
 
 body {
 margin: 0;
