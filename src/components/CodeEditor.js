@@ -88,6 +88,13 @@ function CodeEditor({ samplesText, problemNumber }) {
             })
     };
 
+    const codeRunHandle = (e) => {
+        if ((e.metaKey || e.ctrlKey) && e.code === 'Enter') {
+            e.preventDefault() // not working
+            SampleJudgeHandle()
+        }  
+    }
+
     return (
         <CodeBlock>
             <LanguageBlocks>
@@ -107,6 +114,7 @@ function CodeEditor({ samplesText, problemNumber }) {
                 theme={materialPalenight}
                 extensions={editorLanguage}
                 onChange={(value) => setEditorCode(value)}
+                onKeyDown={codeRunHandle}
             />
 
             <SubmitButtonBlock>
