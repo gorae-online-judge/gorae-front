@@ -31,17 +31,7 @@ jobs:
           registry: ghcr.io
           username: ${{ github.actor }}
           password: ${{ secrets.GHCR }}
-          
-      - uses: actions/setup-node@v3
-        with:
-         node-version: 16
-          
-      - name: npm install
-        run: npm install
-        
-      - name: npm build
-        run: npm run build
-          
+                              
       - name: Build and push
         id: docker_build
         uses: docker/build-push-action@v2
