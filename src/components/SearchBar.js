@@ -83,12 +83,12 @@ button {
     height: 2.5rem;
     border: 1px solid #ccc;
     border-radius: 5px;
-    color: #ffffff;
+    color: #fff;  //#3e577c;
     font-size: 16px;
     cursor: pointer;
     font-weight: 500;
     width: 20%;
-    background-color: #f0879a;
+    background-color: #a0c5ff;
 }
 
 * {

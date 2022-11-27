@@ -129,7 +129,6 @@ function CodeEditor({ samplesText, problemNumber }) {
                 extensions={editorLanguage}
                 onChange={(value) => setEditorCode(value)}
                 onKeyDown={codeRunHandle}
-                tabSize={8}
             />
 
             <SubmitButtonBlock>
