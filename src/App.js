@@ -14,7 +14,8 @@ const GlobalStyle = createGlobalStyle`
       padding: 0;
       margin: 0;
       box-sizing: border-box;
-      font-family: 'Noto Sans KR', 'Roboto', sans-serif;
+      font-family: 'Spoqa Han Sans Neo', 'Noto Sans KR', 'Roboto', sans-serif;
+      line-height: 1.5rem;
   }
 
   body {

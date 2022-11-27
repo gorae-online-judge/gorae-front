@@ -11,6 +11,8 @@
   font-style: normal;
 }
 
+@import url(//spoqa.github.io/spoqa-han-sans/css/SpoqaHanSansNeo.css);
+
 /* 'Nanum Gothic Coding',monospace; */
 @import url(//fonts.googleapis.com/earlyaccess/nanumgothiccoding.css);
 

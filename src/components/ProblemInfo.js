@@ -19,12 +19,12 @@ min-width: 25rem;
 margin: 0 auto;
 padding: 0 1rem;
 flex: 1 1 40%;
-max-height: 70vh;
+max-height: 73vh;
 overflow: scroll;
 margin-bottom: 0.7em;
 
 * {
-    font-family: 'Noto Sans KR';
+    font-family:  'Spoqa Han Sans Neo';
     font-weight: 500;
 }
 

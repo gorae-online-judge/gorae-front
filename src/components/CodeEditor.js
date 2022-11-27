@@ -164,7 +164,7 @@ overflow: scroll;
     padding-top: 0.4rem;
     padding-left: 0.4rem;
     min-height: 26rem;
-    max-height: 55vh;
+    max-height: 53vh;
 }
 `;
 
@@ -208,7 +208,7 @@ button{
     color: #ffffff;
     font-size: 16px;
     cursor: pointer;
-    font-family: 'Noto Sans KR';
+    font-family:  'Spoqa Han Sans Neo';
     font-weight: 600;
     margin-bottom: 0.8rem;
     :first-of-type {

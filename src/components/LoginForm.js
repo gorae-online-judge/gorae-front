@@ -48,7 +48,7 @@ function LoginForm() {
 
 const LoginFormBlock = styled.div`
 * {
-    font-family: 'Noto Sans KR';
+    font-family:  'Spoqa Han Sans Neo';
     font-weight: bold;
 }
 

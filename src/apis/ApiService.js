@@ -21,13 +21,24 @@ function ApiService() {
         },
         getSampleJudgeResult: async (req) => {
             return await Api.post("/judge", req)
-                .then((res) => {
+                .then((res) => { // true, false만 결과로 옴
                     return res.data;
                 })
                 .catch((e) => {
                     console.log(e);
                     return false;
                 });
+        },
+        isIdDuplicated: async (id) => {
+            return await Api.get("/duplicate", {
+                params: { id: id }
+            }).then((res) => { // 'duplicate': true or false
+                return { 'result': true, 'duplicate': res.data } 
+            })
+            .catch((e) => {
+                console.log(e);
+                return { 'result': false }
+            });
         }
     }
     return requests;
