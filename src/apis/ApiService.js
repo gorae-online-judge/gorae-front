@@ -24,7 +24,10 @@ function ApiService() {
                 .then((res) => {
                     return res.data;
                 })
-                .catch((e) => { console.log(e); return e; });
+                .catch((e) => {
+                    console.log(e);
+                    return false;
+                });
         }
     }
     return requests;

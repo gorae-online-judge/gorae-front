@@ -15,6 +15,10 @@ function TextFolder({ title, content, defaultActive = false }) {
 }
 
 const TextFolderBlock = styled.div`
+p {
+    line-height: 1.8em;
+}
+
 button {
     background-color: #a0c5ff;
     color: white;

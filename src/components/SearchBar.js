@@ -51,7 +51,7 @@ function SearchBar(props) {
     return (
         <form onSubmit={submitHandler} onKeyDown={onCheckEnter}>
             <SearchBarBlock>
-                <textarea name="number" rows="1" placeholder="백준 문제 번호를 입력해주세요" required></textarea>
+                <textarea name="number" rows="1" placeholder="백준 문제 번호를 입력해주세요" required>{localStorage.getItem('number') || ''}</textarea>
                 
                 <button type="submit" className="search">{loading ? <BeatLoader color="#fff"
                     size="10px"
@@ -88,7 +88,7 @@ button {
     cursor: pointer;
     font-weight: 500;
     width: 20%;
-    background-color: #bf8dff;
+    background-color: #f0879a;
 }
 
 * {

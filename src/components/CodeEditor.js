@@ -15,7 +15,8 @@ function CodeEditor({ samplesText, problemNumber }) {
     const languageNames = ['Python', 'Java'];
     const editorLanguages = [python(), java()];
     const [editorLanguage, setEditorLanguage] = useState([editorLanguages[0]]);
-    const [editorCode, setEditorCode] = useState('');
+    const [editorCode, setEditorCode] = useState(localStorage.getItem('editorCode') || '');
+    const [saving, setSaving] = useState(false);
 
     const [samplePassed, setSamplePassed] = useState();
     const [submitPassed, setSubmitPassed] = useState();
@@ -40,9 +41,9 @@ function CodeEditor({ samplesText, problemNumber }) {
             { tag: t.comment, color: '#676E95' }, //ok
             { tag: t.variableName, color: '#f07178' }, //ok
             // { tag: t.definition(t.variableName), color: '#82AAFF' }, //ok
-            { tag: t.function(t.variableName), color: '#DECB6B' }, //ok
+            { tag: t.function(t.variableName), color: '#67ac9d' }, //ok
             { tag: [t.string, t.special(t.brace)], color: '#C3E88D' }, //ok
-            { tag: t.number, color: '#FF5370' }, //ok
+            { tag: t.number, color: '#DECB6B' }, //ok
             // { tag: t.bool, color: '#5c6166' },
             // { tag: t.null, color: '#5c6166' },
             { tag: t.keyword, color: '#C792EA' }, //ok
@@ -89,10 +90,23 @@ function CodeEditor({ samplesText, problemNumber }) {
     };
 
     const codeRunHandle = (e) => {
-        if ((e.metaKey || e.ctrlKey) && e.code === 'Enter') {
-            e.preventDefault() // not working
-            SampleJudgeHandle()
+        if ((e.metaKey || e.ctrlKey) && e.key === 'Enter') {
+            SampleJudgeHandle();
+            e.preventDefault(); // not working
+            return false;
         }  
+        if ((e.metaKey || e.ctrlKey) && e.key === 's') {
+            localStorage.setItem('editorCode', editorCode);
+            let number = document.getElementsByName('number')[0].value
+            if (number)
+                localStorage.setItem('number', number);
+            e.preventDefault(); // not working
+            setSaving(true);
+            setTimeout(() => {
+                setSaving(false);
+            },3000);
+            return false;
+        } 
     }
 
     return (
@@ -109,18 +123,19 @@ function CodeEditor({ samplesText, problemNumber }) {
                 }
             </LanguageBlocks>
             <CodeMirror
-                value=""
+                value={localStorage.getItem('editorCode') || ''}
                 // height="500px"
                 theme={materialPalenight}
                 extensions={editorLanguage}
                 onChange={(value) => setEditorCode(value)}
                 onKeyDown={codeRunHandle}
+                tabSize={8}
             />
 
             <SubmitButtonBlock>
                 <button type="button" onClick={SampleJudgeHandle}>채점</button>
                 <button type="button" onClick={() => { console.log('제출', editorCode) }}>제출</button>
-                <button type="button" onClick={() => { console.log('저장', editorCode) }}>저장</button>
+                <button type="button" onClick={() => { console.log('저장', editorCode) }}>{saving ? '저장 완료' : '저장' }</button>
             </SubmitButtonBlock>
 
             {samplesText.length > 0 && 
@@ -140,6 +155,7 @@ max-width: 60rem;
 margin: 0 auto;
 padding: 0 1rem;
 flex: 1 1 50%;
+overflow: scroll;
 
 * {
     font-family: 'Hack';
@@ -148,7 +164,7 @@ flex: 1 1 50%;
 .cm-scroller {
     padding-top: 0.4rem;
     padding-left: 0.4rem;
-    min-height: 20rem;
+    min-height: 26rem;
     max-height: 55vh;
 }
 `;
