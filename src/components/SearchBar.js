@@ -49,7 +49,7 @@ function SearchBar(props) {
     useEffect(() => { console.log(loading) }, [loading]);
 
     return (
-        <form onSubmit={submitHandler} onKeyDown={onCheckEnter}>
+        <form onSubmit={submitHandler} onKeyDown={onCheckEnter} style={{height:'13%', display: 'flex'}}>
             <SearchBarBlock>
                 <textarea name="number" rows="1" placeholder="백준 문제 번호를 입력해주세요" required>{localStorage.getItem('number') || ''}</textarea>
                 
@@ -65,9 +65,12 @@ const SearchBarBlock = styled.div`
 display: flex;
 align-items: center;
 justify-content: space-between;
-max-width:30rem;
-margin: 1rem auto 1rem auto;
-padding: 1rem 3rem;
+/* max-width:30rem; */
+margin: auto;
+width: 80%;
+max-width: 20rem;
+/* padding: auto; */
+/* padding: 1rem 3rem; */
 
 textarea{
     width: 79%;

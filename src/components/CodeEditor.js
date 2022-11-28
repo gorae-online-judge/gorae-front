@@ -23,6 +23,18 @@ function CodeEditor({ samplesText, problemNumber }) {
     const [sampleLoading, setSampleLoading] = useState(false);
     const [submitLoading, setSubmitLoading] = useState(false);
 
+    const handleResize = () => {
+        const vh = window.innerHeight * 0.01;
+        document.documentElement.style.setProperty("--vh", `${vh}px`);
+    };
+
+    useEffect(() => {
+        handleResize();
+        window.addEventListener("resize", handleResize);
+
+        return () => window.removeEventListener("resize", handleResize);
+    }, []);
+
     const materialPalenight = createTheme({
         theme: 'light',
         settings: {
@@ -122,24 +134,26 @@ function CodeEditor({ samplesText, problemNumber }) {
                 })
                 }
             </LanguageBlocks>
-            <CodeMirror
-                value={localStorage.getItem('editorCode') || ''}
-                // height="500px"
-                theme={materialPalenight}
-                extensions={editorLanguage}
-                onChange={(value) => setEditorCode(value)}
-                onKeyDown={codeRunHandle}
-            />
-
+            <div className='wow' style={{height:'69%'}}>
+                <CodeMirror
+                    value={localStorage.getItem('editorCode') || ''}
+                    // height="500px"
+                    theme={materialPalenight}
+                    extensions={editorLanguage}
+                    onChange={(value) => setEditorCode(value)}
+                    onKeyDown={codeRunHandle}
+                />
+            </div>
             <SubmitButtonBlock>
                 <button type="button" onClick={SampleJudgeHandle}>채점</button>
                 <button type="button" onClick={() => { console.log('제출', editorCode) }}>제출</button>
                 <button type="button" onClick={() => { console.log('저장', editorCode) }}>{saving ? '저장 완료' : '저장' }</button>
             </SubmitButtonBlock>
 
-            {samplesText.length > 0 && 
-                <div style={{ padding: '0.2rem 0 0.8rem 0' }}>
-                    <CodeResult name="TESTS" isPassed={samplePassed} loading={sampleLoading } />
+            {/* {samplesText.length > 0 &&  */}
+            { 
+                <div style={{ padding: '0.2rem 0 0.8rem 0', height: '13.5%' }}>
+                    <CodeResult name="TESTS" isPassed={samplePassed} loading={sampleLoading} />
                     <CodeResult name="FINAL TESTS" isPassed={submitPassed} loading={ submitLoading } />
                 </div>
             }
@@ -149,22 +163,59 @@ function CodeEditor({ samplesText, problemNumber }) {
 
 
 const CodeBlock = styled.div`
-min-width: 25rem;
-max-width: 60rem;
+min-width: 13rem;
+/* max-width: 60rem; */
 margin: 0 auto;
 padding: 0 1rem;
 flex: 1 1 50%;
+
+margin-right: 0;
+
 overflow: scroll;
+
+overflow: auto visible;
+/* flex: 1; */
+/* height: inherit; */
+/* min-height: inherit; */
+height: 100%;
+
 
 * {
     font-family: 'Hack';
 }
 
+.cm-theme{
+    height: 100%;
+}
+
+.cm-editor{
+    height: 100%;
+}
+
 .cm-scroller {
     padding-top: 0.4rem;
     padding-left: 0.4rem;
-    min-height: 26rem;
-    max-height: 53vh;
+    height: 100%;
+    /* height: calc(var(--vh, 1vh) * 45); */
+    /* min-height: calc(var(--vh, 1vh) * 40); */
+    /* max-height: calc(var(--vh, 1vh) * 48); */
+    /* max-height: 'calc(var(--vh) * 10)'; */
+    ::-webkit-scrollbar {
+        background: white;
+        width: 1rem;
+    }
+
+    /* background of the scrollbar except button or resizer */
+    /* ::-webkit-scrollbar-track {
+        background-color: #ffffff4d;
+    } */
+
+    /* scrollbar itself */
+    ::-webkit-scrollbar-thumb {
+        background-color: #dee6f2;
+        /* border-radius: 10px; */
+        border: 4px solid #fff;
+    }
 }
 `;
 
@@ -173,6 +224,7 @@ const LanguageBlocks = styled.ul`
 color: #292d3e;
 overflow: hidden;
 border-radius: 5px 5px 0 0;
+/* height: 5%; */
 
 button {
     float: left;

@@ -21,7 +21,7 @@ function CodeResult({ name, isPassed, loading }) {
 
     return (
         <CodeResultBlock>
-            <svg style={{ fill: color, marginTop: "2px" }} width="16" height="16"
+            <svg style={{ fill: color }} width="1.1rem" height="100%"
                 viewBox="0 0 16 16" version="1.1" role="img">
                 <path fillRule="evenodd"
                     d={path}></path>
@@ -32,13 +32,14 @@ function CodeResult({ name, isPassed, loading }) {
 }
 
 const CodeResultBlock = styled.div`
+height: 50%;
     padding: 0.3em 9px;
     overflow: hidden;
     background-color: #fdfdfd;
     box-shadow: 0px 2px 6px rgb(0 0 0 / 20%);
     display: flex;
     align-items: center;
-    height: 2rem;
+    /* height: 2rem; */
     svg {
             margin: 0 0.5em 0 0;
     }

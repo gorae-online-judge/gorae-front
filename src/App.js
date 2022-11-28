@@ -29,6 +29,27 @@ const GlobalStyle = createGlobalStyle`
     margin: 0 auto;
     /* padding-top: 1rem; */
   }
+
+html {
+  height: 100%;
+}
+
+body {
+  height: 100%;
+}
+
+div#root {
+  height: 100%; /* remove this line to see div.app is no more 100% height */
+}
+
+div.app {
+  height: 85%;
+  /* background-color: cornsilk; */
+}
+
+main {
+  height: 100%;
+}
 `;
 
 function App() {
