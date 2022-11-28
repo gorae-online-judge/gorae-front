@@ -8,7 +8,7 @@ function Login() {
     return (
         <>
             <TopNavigationBar />
-            <div>
+            <div className='app'>
                 <main>
                     <LoginForm/>
                 </main>

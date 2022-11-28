@@ -22,7 +22,7 @@ flex: 1 1 0%;
 max-height: 73vh;
 overflow: scroll;
 margin-bottom: 0.7em;
-height: 100%;
+/* height: 100%; */
 
 * {
     font-family:  'Spoqa Han Sans Neo';

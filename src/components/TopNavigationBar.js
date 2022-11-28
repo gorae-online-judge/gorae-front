@@ -6,13 +6,17 @@ import { Link } from 'react-router-dom';
 const TopNavigationBarBlock = styled.header`
 display: flex;
 align-items: center;
-width: 95%;
-max-width: 110rem;
+justify-content: center;
+width: 100%;
 min-width: 850px;
-margin: 0 auto;
-padding: 1rem 1rem 0.8rem 1rem;
+/* margin: auto 5%; */
+padding: 1% 5%;
 background: #f0f0f6;
 height: 100%;
+
+* {
+    /* height: 100%; */
+}
 
 img {
     cursor: pointer;
@@ -28,7 +32,7 @@ h1 {
 
 function TopNavigationBar() {
     return (
-        <div style={{ background: '#f0f0f6', height:'15%'}}>
+        <div style={{ background: '#f0f0f6', height:'12%', minHeight:'7rem'}}>
             <TopNavigationBarBlock>
                 <Link to="/"><img width="85em" src={logoImage} alt='' /></Link>
                 <h1>&lt; Gorae Online Judge /&gt;</h1>

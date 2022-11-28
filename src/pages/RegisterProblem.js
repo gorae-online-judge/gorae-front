@@ -6,7 +6,7 @@ function RegisterProblem() {
     return (
         <>
             <TopNavigationBar />
-            <div>
+            <div className='app'>
                 <main>
                 </main>
             </div>

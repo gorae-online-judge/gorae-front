@@ -74,7 +74,7 @@ function SignUp() {
     return (
         <>
             <TopNavigationBar />
-            <div>
+            <div className='app'>
                 <main>
                     <SignUpBlock onSubmit={submitHandler} onKeyDown={onCheckEnter}>
                         <InputBlock>
@@ -125,6 +125,7 @@ function SignUp() {
 
 const SignUpBlock = styled.form`
 width: 90%;
+/* height: 100%; */
 /* min-width: 25rem; */
 max-width: 40rem;
 margin: auto;
@@ -132,7 +133,9 @@ display: flex;
 justify-content: center;
 flex-direction:column;
 align-items: center;
-margin-top: 1rem;
+/* margin-top: 1rem; */
+position: relative;
+top: 5%;
 
 p {
     margin: 0;
@@ -140,7 +143,6 @@ p {
 
 a {
     text-decoration: none;
-    text-decoration: underline;
     color: #3d79d8;
     margin: 0;
     :hover{

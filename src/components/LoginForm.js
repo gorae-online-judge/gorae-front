@@ -22,7 +22,7 @@ function LoginForm() {
     return (
         <LoginFormBlock>
             <div className="shadow-block">
-                <div style={{ width: '100%', height: '100%', padding: '5rem' }}>
+                <div style={{ width: '80%', height: '50%' }}>
                     <p>로그인</p>
                     <hr style={{ borderTop: '1px solid #ddd' }}></hr>
                     <br></br>
@@ -47,6 +47,8 @@ function LoginForm() {
 }
 
 const LoginFormBlock = styled.div`
+height: 100%;
+
 * {
     font-family:  'Spoqa Han Sans Neo';
     font-weight: bold;
@@ -60,17 +62,24 @@ color: #555;
 }
 
 .shadow-block{
-    height: 50%;
-    min-height: 25rem;
+display: flex;
+align-items: center;
+justify-content: center;
+
+height: 23rem;
+    /* height: 40%; */
+    margin: auto;
+    /* min-height: 25rem; */
     background-color: #fdfdfd;
     box-shadow: 0px 2px 6px rgb(0 0 0 / 20%);
-    position: fixed;
-    top: 13rem;
+    position: absolute;
+    top: 30%;
     left: 50%;
     transform: translate(-50%, 0);
-    min-width: 30rem;
-    max-width: 40rem;
+    min-width: 23rem;
+    max-width: 35rem;
     width: 80%;
+    margin-top: 1rem;
 }
 
 .divider{
@@ -83,6 +92,9 @@ color: #555;
     display: flex;
     align-items: center;
     justify-content: space-between;
+    :hover {
+        text-decoration: underline;
+    }
 }
 
 form {

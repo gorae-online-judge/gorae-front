@@ -30,7 +30,7 @@ function SearchProblem() {
                     <ProblemBlock>
                         <ProblemInfo description={description} input={input} output={output} samples={samples} />
                         <Resizable
-                            defaultSize={{ width: '50%', height: '100%' }}
+                            defaultSize={{ width: '58%', height: '100%' }}
                             minWidth={'15%'}
                             maxWidth={'100%'}
                             enable={{
@@ -70,7 +70,7 @@ const ProblemBlock = styled.div`
   display: flex;
   justify-content: space-around;
   flex-wrap: wrap;
-  height: 87%;
+  height: 85%;
   /* max-height: 70vh; */
 `;
 

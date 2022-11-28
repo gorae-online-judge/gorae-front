@@ -43,7 +43,7 @@ div#root {
 }
 
 div.app {
-  height: 85%;
+  height: 88%;
   /* background-color: cornsilk; */
 }
 
@@ -60,7 +60,6 @@ function App() {
         <Route path="/" element={<Login />} />
         <Route path="/signup" element={<SignUp />} />
         <Route path="/problem/search" element={<SearchProblem />} />
-        <Route path="/problem/solve" element={<SolveProblem />} />
         <Route path="/problem/register" element={<RegisterProblem />} />
       </Routes>
     </>
