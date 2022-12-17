@@ -80,6 +80,7 @@ function SignUp() {
                         <InputBlock>
                             <label for="id">아이디</label>
                             <button type="button" onClick={checkIdDuplicate}>중복 확인</button>
+                            <p style={{marginLeft: '0.3rem'}}>⚠️ 백준 아이디와 같은 아이디를 입력해주세요.</p>
                             <input id="id" name="id" rows="1" placeholder="id" type='id' required></input>
                         </InputBlock>
 

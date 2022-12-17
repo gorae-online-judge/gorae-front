@@ -131,7 +131,7 @@ form {
         font-size: 16px;
         cursor: pointer;
         font-weight: 500;
-        background-color: #bf8dff;
+        background-color: #8bb8ff;
     }
     .signup-btn {
         background: none;

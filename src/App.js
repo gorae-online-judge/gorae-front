@@ -3,9 +3,8 @@ import React from 'react';
 import './App.css';
 import { Route, Routes } from "react-router-dom";
 import Login from './pages/Login'
-import SearchProblem from './pages/SearchProblem';
 import SolveProblem from './pages/SolveProblem';
-import RegisterProblem from './pages/RegisterProblem';
+import RegisterProblem from './pages/SearchProblem';
 import { createGlobalStyle } from 'styled-components';
 import SignUp from './pages/SignUp';
 
@@ -59,8 +58,8 @@ function App() {
         <Routes>
         <Route path="/" element={<Login />} />
         <Route path="/signup" element={<SignUp />} />
-        <Route path="/problem/search" element={<SearchProblem />} />
-        <Route path="/problem/register" element={<RegisterProblem />} />
+        <Route path="/problem/solve" element={<SolveProblem />} />
+        <Route path="/problem/search" element={<RegisterProblem />} />
       </Routes>
     </>
   );
