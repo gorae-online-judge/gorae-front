@@ -149,6 +149,8 @@ function CodeEditor({ samplesText, problemNumber }) {
                 setSubmitLoading(false);
             })
             .catch((err) => {
+                console.log(localStorage.getItem("Authoriazation"));
+                console.log(problemNumber, req);
                 setSubmitLoading(false);
             }
             );
