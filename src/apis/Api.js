@@ -5,7 +5,7 @@ const Api = axios.create({
 });
 
 const MemberApi = axios.create({
-    baseURL: "http://172.17.0.1:7070/",
+    baseURL: "http://localhost:7070/",
 });
 
 const jwt = localStorage.getItem('jwt');
