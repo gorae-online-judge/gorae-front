@@ -30,7 +30,7 @@ function ApiService() {
                 });
         },
         isIdDuplicated: async (id) => {
-            return await Api.get("/members", {
+            return await Api.get("/members/duplication", {
                 params: { id: id }
             }).then((res) => { // 'duplicate': true or false
                 return res.data;

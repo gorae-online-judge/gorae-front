@@ -19,6 +19,7 @@ function SignUp() {
     const [passwordConfirm, setPasswordConfirm] = useState("");
     const [bojToken, setBojToken] = useState("");
     const [loading, setLoading] = useState(false);
+    const [idConfirmMessage, setIdConfirmMessage] = useState("");
 
     const apiService = ApiService();
 
@@ -29,6 +30,13 @@ function SignUp() {
     //         document.body.style.cursor = "";
     //     }
     // }, [loading])
+    
+    useEffect(() => { 
+        if (idDuplicateState === CheckState.NOT_PASSED)
+            setIdConfirmMessage("존재하는 아이디입니다.")
+        else if (idDuplicateState === CheckState.PASSED)
+            setIdConfirmMessage("사용 가능한 아이디입니다.")
+    }, [idDuplicateState]);
 
 
     const onIdChange = (e) => {
@@ -85,10 +93,10 @@ function SignUp() {
         setLoading(true);
         apiService.isIdDuplicated(id)
             .then((res) => {
-                if (res.isDuplicated) { // 중복
-                    setIdDuplicateState(CheckState.PASSED);
-                } else {
+                if (res.duplicated) { // 중복
                     setIdDuplicateState(CheckState.NOT_PASSED);
+                } else {
+                    setIdDuplicateState(CheckState.PASSED);
                 }
                 setLoading(false);
             })
@@ -110,9 +118,7 @@ function SignUp() {
                             <p style={{marginLeft: '0.3rem'}}>⚠️ 백준 아이디와 같은 아이디를 입력해주세요. 다르다면 제출 후 결과를 받아올 수 없습니다.</p>
                             <input id="id" name="id" onChange={onIdChange} rows="1" placeholder="id" type='id' required></input>
                             <p style={{ marginLeft: '0.3rem', fontSize: '0.9rem' }}>
-                            {idDuplicateState === CheckState.NOT_PASSED ? "존재하는 아이디입니다." : ""}
-                            {idDuplicateState === CheckState.PASSED ? "사용 가능한 아이디입니다." : ""}
-                            {/* {idDuplicateState === CheckState.YET ? "아이디 중복 확인을 해주세요." : ""} */}
+                                { idConfirmMessage }
                             </p>
                         </InputBlock>
 
