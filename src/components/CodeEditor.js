@@ -139,6 +139,7 @@ function CodeEditor({ samplesText, problemNumber }) {
             "language": languageNames[selectedLanguage],
             "source": editorCode
         };
+        console.log("jwt값 확인" + localStorage.getItem('jwt'));
         apiService.submitResult(problemNumber, req)
             .then((res) => {
                 if (res.success) { // 맞음
