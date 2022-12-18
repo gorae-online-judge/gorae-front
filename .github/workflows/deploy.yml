@@ -7,7 +7,7 @@ env:
   DOCKER_IMAGE: ghcr.io/gorae-online-judge/web-front # 예를 들면, ghcr.io/dolphago/github-follow-unfollow
   VERSION: ${{ github.sha }}
   CONTAINER_NAME: gorae-front
-  PORT: 3000
+  PORT: 8000
   
 jobs:
   build:
