@@ -32,18 +32,6 @@ jobs:
           registry: ghcr.io
           username: ${{ github.actor }}
           password: ${{ secrets.GHCR }}
-                 
-      - name: Use Node.js ${{ matrix.node-version }}
-        uses: actions/setup-node@v3
-        with:
-          node-version: ${{ matrix.node-version }}
-          cache: "npm"
-      - name: Install modules
-        run: npm install
-      - name: Run test codes
-        run: npm run test
-      - name: Build project
-        run: npm run build
         
       - name: Build and push
         id: docker_build
