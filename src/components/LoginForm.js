@@ -3,14 +3,41 @@ import styled from "styled-components";
 import BeatLoader from "react-spinners/BeatLoader";
 import { Divider } from "@material-ui/core";
 import { Link } from "react-router-dom";
+import ApiService from "../apis/ApiService";
 
 function LoginForm() {
     const [loading, setLoading] = useState(false);
+    const [id, setId] = useState("");
+    const [password, setPassword] = useState("");
+    const apiService = ApiService();
 
     const submitHandler = (e) => {
         setLoading(true);
         e.preventDefault();
+        const req = {
+            id: id,
+            password: password
+        };
+        apiService.login(req)
+            .then((res) => {
+                setLoading(false);
+                localStorage.setItem("jwt", res.token);
+            })
+            .catch((err) => {
+                console.log('req', req);
+                alert("로그인 실패했습니다.");
+                setLoading(false);
+            }
+        );
     };
+
+    const onIdChange = (e) => {
+        setId(e.target.value);
+    }
+
+    const onPasswordChange = (e) => {
+        setPassword(e.target.value);
+    }
 
     const onCheckEnter = (e) => {
         if (e.key === 'Enter') {
@@ -27,8 +54,8 @@ function LoginForm() {
                     <hr style={{ borderTop: '1px solid #ddd' }}></hr>
                     <br></br>
                     <form onSubmit={submitHandler} onKeyDown={onCheckEnter}>
-                        <textarea id="id" name="id" rows="1" placeholder="id" required></textarea>
-                        <textarea id="password" name="password" rows="1" placeholder="password" required></textarea>
+                        <textarea id="id" name="id" onChange={onIdChange} rows="1" placeholder="id" required></textarea>
+                        <textarea id="password" name="password" onChange={onPasswordChange} rows="1" placeholder="password" required></textarea>
                         <button className="login" type="submit">
                             {loading ? <BeatLoader color="#fff" size="10px" /> : "로그인"}</button>
                         <div className="signup">

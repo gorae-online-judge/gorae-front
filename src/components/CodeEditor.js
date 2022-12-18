@@ -106,7 +106,7 @@ function CodeEditor({ samplesText, problemNumber }) {
             SampleJudgeHandle();
             e.preventDefault(); // not working
             return false;
-        }  
+        }
         if ((e.metaKey || e.ctrlKey) && e.key === 's') {
             localStorage.setItem('editorCode', editorCode);
             let number = document.getElementsByName('number')[0].value
@@ -116,10 +116,44 @@ function CodeEditor({ samplesText, problemNumber }) {
             setSaving(true);
             setTimeout(() => {
                 setSaving(false);
-            },3000);
+            }, 3000);
             return false;
-        } 
-    }
+        }
+    };
+
+    const onSubmit = (e) => {
+        if (!editorCode) {
+            alert("코드를 입력해주세요.");
+            return;
+        }
+        if (samplesText.length === 0) {
+            alert("문제를 입력해주세요.");
+            return;
+        }
+        if (!localStorage.getItem("jwt")) {
+            alert("제출하려면 로그인을 해주세요.");
+            return
+        }
+        setSubmitLoading(true);
+        const req = {
+            "language": languageNames[selectedLanguage],
+            "source": editorCode
+        };
+        apiService.submitResult(problemNumber, req)
+            .then((res) => {
+                if (res.success) { // 맞음
+                    setSubmitPassed(true);
+                } else {
+                    alert(res.result);
+                }
+                setSubmitLoading(false);
+            })
+            .catch((err) => {
+                setSubmitLoading(false);
+            }
+            );
+
+    };
 
     return (
         <CodeBlock>
@@ -134,7 +168,7 @@ function CodeEditor({ samplesText, problemNumber }) {
                 })
                 }
             </LanguageBlocks>
-            <div className='wow' style={{height:'69%'}}>
+            <div className='wow' style={{ height: '69%' }}>
                 <CodeMirror
                     value={localStorage.getItem('editorCode') || ''}
                     // height="500px"
@@ -146,15 +180,15 @@ function CodeEditor({ samplesText, problemNumber }) {
             </div>
             <SubmitButtonBlock>
                 <button type="button" onClick={SampleJudgeHandle}>채점</button>
-                <button type="button" onClick={() => { console.log('제출', editorCode) }}>제출</button>
-                <button type="button" onClick={() => { console.log('저장', editorCode) }}>{saving ? '저장 완료' : '저장' }</button>
+                <button type="button" onClick={onSubmit}>제출</button>
+                {/* <button type="button" onClick={() => { console.log('저장', editorCode) }}>{saving ? '저장 완료' : '저장' }</button> */}
             </SubmitButtonBlock>
 
             {/* {samplesText.length > 0 &&  */}
-            { 
+            {
                 <div style={{ padding: '0.2rem 0 0.8rem 0', height: '13.5%' }}>
                     <CodeResult name="TESTS" isPassed={samplePassed} loading={sampleLoading} />
-                    <CodeResult name="FINAL TESTS" isPassed={submitPassed} loading={ submitLoading } />
+                    <CodeResult name="FINAL TESTS" isPassed={submitPassed} loading={submitLoading} />
                 </div>
             }
         </CodeBlock>
@@ -284,10 +318,15 @@ button{
     :last-of-type {
         border-left-width: 0;
         border-radius: 0 0 5px 0;
-        background: linear-gradient(96.07deg, #a4b6ff 0%, #C284FF 100%);
+        /* background: linear-gradient(96.07deg, #a4b6ff 0%, #C284FF 100%);
         :hover {
             color: #2a2d3e;
             background: linear-gradient(96.07deg, #a4b6ff8c 0%, #C284FF8c 100%);
+        } */
+        background: linear-gradient(96.07deg, #96cbfe 0%, #C284FF 100%);
+        :hover {
+            color: #2a2d3e;
+            background: linear-gradient(96.07deg, #96cbfe8c 0%, #C284FF8c 100%);
         }
     }
 }

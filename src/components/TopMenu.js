@@ -26,7 +26,7 @@ function TopMenu() {
         <TopMenuBlock>
             <li><Link to="/">홈</Link></li>
             <li><Link to="/problem/solve">문제 풀기</Link></li>
-            <li><Link to="/problem/search">문제 구경하기</Link></li>
+            {/* <li><Link to="/problem/search">문제 구경하기</Link></li> */}
         </TopMenuBlock>
     );
 }

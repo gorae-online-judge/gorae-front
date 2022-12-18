@@ -30,15 +30,33 @@ function ApiService() {
                 });
         },
         isIdDuplicated: async (id) => {
-            return await Api.get("/duplicate", {
+            return await Api.get("/members", {
                 params: { id: id }
             }).then((res) => { // 'duplicate': true or false
-                return { 'result': true, 'duplicate': res.data } 
-            })
-            .catch((e) => {
-                console.log(e);
-                return { 'result': false }
+                return res.data;
             });
+        },
+        createMember: async (req) => {
+            return await Api.post("/members", req)
+                .then((res) => { 
+                    return res.data;
+                })
+                .catch((e) => {
+                    console.log('req', req);
+                    return false;
+                });
+        },
+        login: async (req) => {
+            return await Api.post("/members/login", req)
+                .then((res) => {
+                    return res.data;
+                });
+        },
+        submitResult: async (problemNumber, req) => {
+            return await Api.post("/search/submit/" + problemNumber, req)
+                .then((res) => {
+                    return res.data;
+                });
         }
     }
     return requests;

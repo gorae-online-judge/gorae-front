@@ -10,7 +10,7 @@ justify-content: center;
 width: 100%;
 min-width: 850px;
 /* margin: auto 5%; */
-padding: 1% 5%;
+padding: 1% 7%;
 background: #f0f0f6;
 height: 100%;
 
