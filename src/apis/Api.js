@@ -6,7 +6,7 @@ const Api = axios.create({
 
 const jwt = localStorage.getItem('jwt');
 Api.defaults.headers.common['Authorization'] = jwt
-    ? jwt
+    ? 'Bearer ' + jwt
     : '';
 
 export default Api;
