@@ -2,7 +2,7 @@ import { useState } from "react";
 import styled from "styled-components";
 import BeatLoader from "react-spinners/BeatLoader";
 import { Divider } from "@material-ui/core";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import ApiService from "../apis/ApiService";
 
 function LoginForm() {
@@ -10,6 +10,7 @@ function LoginForm() {
     const [id, setId] = useState("");
     const [password, setPassword] = useState("");
     const apiService = ApiService();
+    const navigate = useNavigate();
 
     const submitHandler = (e) => {
         setLoading(true);
@@ -22,6 +23,7 @@ function LoginForm() {
             .then((res) => {
                 setLoading(false);
                 localStorage.setItem("jwt", res.token);
+                navigate("/problem/solve");
             })
             .catch((err) => {
                 console.log('req', req);

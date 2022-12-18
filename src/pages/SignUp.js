@@ -71,7 +71,7 @@ function SignUp() {
                     .then((data) => {
                         setLoading(false);
                         alert("회원가입이 완료되었습니다.");
-                        navigate("/problem/solve");
+                        navigate("/");
                     });
             } else {
                 alert("비밀번호가 일치해야 합니다.");
