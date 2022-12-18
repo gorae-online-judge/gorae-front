@@ -1,4 +1,4 @@
-import Api from './Api';
+import { Api, MemberApi } from './Api';
 
 function ApiService() {
     const requests = {
@@ -30,14 +30,14 @@ function ApiService() {
                 });
         },
         isIdDuplicated: async (id) => {
-            return await Api.get("/members/duplication", {
+            return await MemberApi.get("/members/duplication", {
                 params: { id: id }
             }).then((res) => { // 'duplicate': true or false
                 return res.data;
             });
         },
         createMember: async (req) => {
-            return await Api.post("/members", req)
+            return await MemberApi.post("/members", req)
                 .then((res) => { 
                     return res.data;
                 })
@@ -47,7 +47,7 @@ function ApiService() {
                 });
         },
         login: async (req) => {
-            return await Api.post("/members/login", req)
+            return await MemberApi.post("/members/login", req)
                 .then((res) => {
                     return res.data;
                 });
