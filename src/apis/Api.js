@@ -6,12 +6,15 @@ const Api = axios.create({
 
 const MemberApi = axios.create({
     baseURL: "http://localhost:7070/",
+    headers: {
+        'Authorization': 'Bearer ' + localStorage.getItem('jwt'),
+    },
 });
 
-const jwt = localStorage.getItem('jwt');
-Api.defaults.headers.common['Authorization'] = jwt
-    ? 'Bearer ' + jwt
-    : '';
+// const jwt = localStorage.getItem('jwt');
+// Api.defaults.headers.common['Authorization'] = jwt
+//     ? 'Bearer ' + jwt
+//     : '';
 
 export { 
     Api,
