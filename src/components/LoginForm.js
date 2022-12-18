@@ -43,8 +43,7 @@ function LoginForm() {
 
     const onCheckEnter = (e) => {
         if (e.key === 'Enter') {
-            setLoading(true);
-            e.preventDefault();
+            submitHandler(e);
         }
     };
 
